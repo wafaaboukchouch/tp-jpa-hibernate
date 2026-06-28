@@ -1,0 +1,20 @@
+package ma.projet.tp_jpa.entities;
+
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.List;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class AppUser {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String username;
+    private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<AppRole> roles;
+}
+
